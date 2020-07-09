@@ -1,13 +1,326 @@
+:root {
+  --white: #ffffff;
+  --grey1: #edf2f6;
+  --grey2: #2f3848;
+  --grey3: #1a202d;
+  --black: #000000;
+  --headingFont:'Raleway', sans-serif;
+  --textFont:  'Roboto', sans-serif;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+} 
+html {
+  box-sizing: border-box;
+  height: 100%;
+  font-size: 62.5%; 
+}
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  min-height: 100%;
+  background-color: var(--grey1);
+  font-size: 16px; 
+  font-size: 1.6rem;
+  font-family: var(--textFont);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+
+h1, h2 {
+  font-family: var(--headingFont);
+  font-weight: 900;
+  margin: 0 0 4rem 0;
+  text-align: center;
+  color: var(--grey2);
+}
+h1 span {
+  font-weight: 400;
+}
+h1 {
+  font-size: 3rem;
+}
+h2 {
+  font-size: 2.4rem;
+}
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+a {
+  text-decoration: none;
+  color: var(--grey2);
+}
+
+/** BOTONES **/
+.j-btn {
+  margin-top: 2rem;
+  font-family: var(--headingFont);
+  padding: 1.5rem;
+  font-size: 1.4;
+  font-weight: 400;
+  border-radius: .5rem;
+  border: none;
+  transition: background-color .3s ease;
+}
+.j-btn:hover {
+  cursor: pointer;
+}
+.j-btn-primary {
+  background-color: var(--grey2);
+  color: var(--white);
+}
+.j-btn-primary:hover {
+  background: var(--grey3);
+}
+.j-btn-secondary {
+  background-color: var(--grey1);
+}
+.j-btn-block {
+  display: block;
+  width: 100%;
+}
+.j-btn-submit:hover {
+  background-color: var(--grey2);
+}
+.j-btn-blank {
+  margin: 0;
+  padding: 0;
+  display: block;
+  background-color: transparent;
+}
+
+@media (min-width: 768px) {
+  .j-container-app {
+      display: flex;
+      min-height: 100vh;
+  }
+
+  aside {
+      background-color: var(--white);
+      flex: 0 0 300px;
+  }
+  .section-main {
+      flex: 1;
+  }
+
+}
+
+
+/* BARRA LATERAL */
+aside  {
+  padding: 3rem;
+}
+
+.j-form-new-proyect {
+  margin-top: 6rem;
+}
+.j-form-new-proyect .j-input-text {
+  border-bottom: 1px solid var(--grey2);
+  border-radius: 0;
+  background-color: var(--grey1);
+}
+.j-form-new-proyect .j-input-text::placeholder{
+  color: var(--grey2);
+}
+.j-proyect {
+  margin-top: 10rem;
+}
+.j-list-proyect li {
+  margin-bottom: 2rem;
+}
+.j-list-proyect li a {
+  font-size: 1.4rem;
+  color: var(--grey2);
+  line-height: 1.5;
+  font-weight: 300;
+}
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--grey2);
+  padding: 4rem;
+}
+.j-name-user {
+  color: var(--white);
+  font-size: 2.2rem;
+  margin: 0;
+}
+.j-name-user span {
+  font-weight: 900;
+}
+.j-nav-main a {
+  color: var(--white);
+  text-decoration: none;
+}
+.j-nav-main a:first-of-type {
+  margin-right: 2rem;
+}
+
+/** Formulario crear y editar tareas **/
+.j-form {
+  background-color: var(--grey3);
+  padding: 4rem;
+}
+.j-form form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+.j-container-input {
+  display: flex;
+}
+.j-container-input label {
+  margin-bottom: 1rem;
+  color: var(--white);
+}
+.j-input-text {
+  padding: 1rem;
+  border: none;
+  border-radius: .5rem;
+  flex: 1;
+  width: 100%;
+}
+
+/** TAREAS LISTADO **/
+.j-container-tasks {
+  padding: 4rem;
+}
+
+
+
+.j-list-tasks {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.j-task {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--white);
+  padding: .5rem 2rem;
+  align-items: center;
+  margin-bottom: 1rem;
+  border-radius: .5rem;
+
+}
+.j-shadow {
+  -webkit-box-shadow: 0px 4px 10px -3px rgba(117,117,117,1);
+  -moz-box-shadow: 0px 4px 10px -3px rgba(117,117,117,1);
+  box-shadow: 0px 4px 10px -3px rgba(117,117,117,1);
+}
+.j-shadow-dark {
+  -webkit-box-shadow: 0px 6px 11px -8px rgba(0,0,0,0.9);
+  -moz-box-shadow: 0px 6px 11px -8px rgba(0,0,0,0.9);
+  box-shadow: 0px 6px 11px -8px rgba(0,0,0,0.9);
+}
+.j-task .acciones .j-btn:first-of-type {
+  margin-right: 1rem;
+}
+.j-task p {
+  font-size: 1.6rem;
+  flex: 1;
+  padding-right: 2rem;
+}
+.j-task .j-btn {
+  padding: .8rem;
+  font-size:1.4rem;
+  border-radius: 0;
+  margin: 0;
+}
+
+.j-status {
+  margin-right: 1rem;
+}
+.j-status button, 
+.j-message {
+  font-weight: 900;
+  font-family: var(--textFont);
+  font-size: 1rem;
+  padding: .5rem;
+  border-radius: .5rem;
+  cursor: pointer;
+  border: none;
+}
+.j-message {
+  text-align: center;
+  font-size: 1.6rem;
+  border-radius: 0;
+}
+.j-message:hover {
+  cursor: default;
+}
+.j-complete,
+.j-correct {
+  background-color: rgba(154, 252, 154, .3);
+  color: var(--grey3);
+}
+.j-incomplete{
+  background-color: rgba(255, 178, 178, .4);
+  color: var(--grey3);
+}
+.j-error {
+  max-width: 600px;
+  margin: 2rem auto 0 auto;
+  background-color: rgb(170, 0, 0);
+  color: var(--white);
+}
+
+.j-task-enter,
+.j-proyect-enter {
+  opacity: 0;
+}
+.j-task-enter-active,
+.j-proyect-enter-active {
+  opacity: 1;
+  transition: opacity 200ms;
+}
+.j-task-exit,
+.proyecto-exit {
+  opacity: 1;
+}
+.j-task-exit-active,
+.j-proyect-exit-active {
+  opacity: 0;
+  transition: opacity 200ms;
+}
+
+.j-form-user {
+    background-color: var(--grey2);
+    height: 100vh;
+    min-height: 800px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.j-container-form {
+    padding: 5rem 3rem;
+    max-width: 500px;
+    width: 95%;
+    background-color: var(--white);
+    border-radius: 1rem;
+}
+
+.j-field-form {
+    display: flex;
+    margin-bottom: 2rem;
+    align-items: center;
+}
+.j-field-form:last-of-type {
+  margin: 0;
+}
+.j-field-form label {
+  flex: 0 0 100px;
+  font-family: var(--textFont);
+}
+.j-field-form input[type="password"],
+.j-field-form input[type="email"], 
+.j-field-form input[type="text"] {
+  border: 1px solid #e1e1e1;
+  padding: 1rem;
+  flex: 1;
+}
+
+.j-link-account {
+  margin-top: 2rem;
+  display: block;
+  opacity: .7;
 }
