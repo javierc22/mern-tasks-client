@@ -1,8 +1,28 @@
-import React from 'react';
+import React, {useState} from 'react';
+import { Link } from "react-router-dom";
 
 const Login = () => {
 
-  const onChange = () => {
+  // State para iniciar sesión
+  const [user, setUser] = useState({
+    email: '',
+    password: ''
+  });
+
+  // Extraer de State "user"
+  const { email, password } = user;
+
+  // Funcion para actualizar State "user"
+  const onChange = e => {
+    setUser({
+      ...user,
+      [e.target.name] : e.target.value
+    })
+  }
+
+  // Cuando se envía el formulario
+  const onSubmit = e => {
+    e.preventDefault();
 
   }
 
@@ -11,7 +31,7 @@ const Login = () => {
       <div className="j-container-form j-shadow-dark">
         <h1>Iniciar Sesión</h1>
 
-        <form>
+        <form onSubmit={onSubmit}>
           <div className="j-field-form">
             <label htmlFor="email">Email</label>
             <input 
@@ -19,7 +39,8 @@ const Login = () => {
               id="email"
               name="email" 
               placeholder="Tu Email" 
-              onChange={onChange} 
+              onChange={onChange}
+              value={email}
             />
           </div>
           <div className="j-field-form">
@@ -30,6 +51,7 @@ const Login = () => {
               name="password" 
               placeholder="Tu Contraseña" 
               onChange={onChange} 
+              value={password}
             />
           </div>
 
@@ -41,6 +63,10 @@ const Login = () => {
             />
           </div>
         </form>
+
+        <Link to={'/nueva-cuenta'} className="j-link-account">
+          Obtener Cuenta
+        </Link>
       </div>
     </div>
   );
