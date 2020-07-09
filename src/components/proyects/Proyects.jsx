@@ -1,8 +1,19 @@
 import React from 'react';
+import Sidebar from '../layout/Sidebar';
 
 const Proyects = () => {
   return (
-    <h2>Desde Proyectos</h2>
+    <div className="j-container-app">
+      <Sidebar />
+
+      <div className="j-section-main">
+        <main>
+          <div className="j-container-tasks">
+
+          </div>
+        </main>
+      </div>
+    </div>
   );
 }
  
