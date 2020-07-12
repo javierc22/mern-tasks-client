@@ -24,6 +24,12 @@ const ListTasks = () => {
           ))
         }
       </ul>
+      <button
+        type="button"
+        className="j-btn j-btn-delete"
+      >
+        Eliminar Proyecto &times;
+      </button>
     </Fragment>
   );
 }

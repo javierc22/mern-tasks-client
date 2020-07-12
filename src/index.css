@@ -74,6 +74,11 @@ a {
 .j-btn-secondary {
   background-color: var(--grey1);
 }
+
+.j-btn-delete {
+  background-color: var(--white);
+}
+
 .j-btn-block {
   display: block;
   width: 100%;
@@ -212,7 +217,7 @@ aside  {
   -moz-box-shadow: 0px 6px 11px -8px rgba(0,0,0,0.9);
   box-shadow: 0px 6px 11px -8px rgba(0,0,0,0.9);
 }
-.j-task .acciones .j-btn:first-of-type {
+.j-task .j-actions .j-btn:first-of-type {
   margin-right: 1rem;
 }
 .j-task p {
