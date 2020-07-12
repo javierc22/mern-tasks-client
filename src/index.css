@@ -124,10 +124,10 @@ aside  {
 .j-proyects {
   margin-top: 10rem;
 }
-.j-list-proyect li {
+.j-list-proyects li {
   margin-bottom: 2rem;
 }
-.j-list-proyect li a {
+.j-list-proyects li a {
   font-size: 1.4rem;
   color: var(--grey2);
   line-height: 1.5;
