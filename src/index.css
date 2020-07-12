@@ -121,7 +121,7 @@ aside  {
 .j-form-new-proyect .j-input-text::placeholder{
   color: var(--grey2);
 }
-.j-proyect {
+.j-proyects {
   margin-top: 10rem;
 }
 .j-list-proyect li {
