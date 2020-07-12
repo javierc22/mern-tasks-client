@@ -6,6 +6,12 @@ import {FORM_PROYECT} from '../../types';
 const ProyectState = props => {
 
   const initialState = {
+    proyects : [
+      { id: 1, name: 'Tienda Virtual' },
+      { id: 2, name: 'Intranet' },
+      { id: 3, name: 'Diseño de Sitio web' },
+      { id: 4, name: 'MERN '}
+    ],
     form: false
   }
 
@@ -22,6 +28,7 @@ const ProyectState = props => {
     <proyectContext.Provider
       value={{
         form: state.form,
+        proyects: state.proyects,
         showForm
       }}
     >
