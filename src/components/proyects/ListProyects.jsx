@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect} from 'react';
 import Proyect from './Proyect';
 import proyectContext from '../../context/proyects/proyectContext';
 
@@ -6,7 +6,12 @@ const ListProyects = () => {
 
   // Extraer proyectos del State Inicial
   const proyectsContext = useContext(proyectContext)
-  const { proyects } = proyectsContext;
+  const { proyects, getProyects } = proyectsContext;
+
+  // Obtener proyectos cuando carga el componente
+  useEffect(() =>{
+    getProyects();
+  }, []);
 
   // Verificar si el State 'proyects' tiene contenido
   if (proyects.length === 0) return null;
