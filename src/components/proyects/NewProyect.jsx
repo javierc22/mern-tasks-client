@@ -5,7 +5,7 @@ const NewProyect = () => {
 
   // Obtener el State del Formulario
   const proyectsContext = useContext(proyectContext);
-  const { form } = proyectsContext;
+  const { form, showForm } = proyectsContext;
 
   // State para nuevo proyecto
   const [proyect, setProyect] = useState({
@@ -28,9 +28,18 @@ const NewProyect = () => {
     e.preventDefault()
   }
 
+  // Mostrar el formulario
+  const onClickForm = () => {
+    showForm();
+  }
+
   return (
     <Fragment>
-      <button type="button" className="j-btn j-btn-block j-btn-primary">
+      <button 
+        type="button" 
+        className="j-btn j-btn-block j-btn-primary"
+        onClick={onClickForm}
+      >
         Nuevo Proyecto
       </button>
 
