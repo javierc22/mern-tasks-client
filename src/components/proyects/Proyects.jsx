@@ -1,5 +1,6 @@
 import React from 'react';
 import Sidebar from '../layout/Sidebar';
+import Header from '../layout/Header';
 
 const Proyects = () => {
   return (
@@ -7,6 +8,8 @@ const Proyects = () => {
       <Sidebar />
 
       <div className="j-section-main">
+        <Header />
+
         <main>
           <div className="j-container-tasks">
 

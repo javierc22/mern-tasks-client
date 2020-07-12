@@ -98,7 +98,7 @@ a {
       background-color: var(--white);
       flex: 0 0 300px;
   }
-  .section-main {
+  .j-section-main {
       flex: 1;
   }
 
@@ -133,9 +133,10 @@ aside  {
   line-height: 1.5;
   font-weight: 300;
 }
-.app-header {
+.j-app-header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   background-color: var(--grey2);
   padding: 4rem;
 }
