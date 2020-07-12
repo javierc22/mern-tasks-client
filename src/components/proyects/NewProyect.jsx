@@ -1,6 +1,11 @@
-import React, {Fragment, useState} from 'react';
+import React, {Fragment, useState, useContext} from 'react';
+import proyectContext from '../../context/proyects/proyectContext';
 
 const NewProyect = () => {
+
+  // Obtener el State del Formulario
+  const proyectsContext = useContext(proyectContext);
+  const { form } = proyectsContext;
 
   // State para nuevo proyecto
   const [proyect, setProyect] = useState({
@@ -29,25 +34,29 @@ const NewProyect = () => {
         Nuevo Proyecto
       </button>
 
-      <form 
-        className="j-form-new-proyect"
-        onSubmit={onSubmitProyect}
-      >
-        <input
-          type="text" 
-          className="j-input-text"
-          placeholder="Nombre Proyecto"
-          name="name"
-          value={name}
-          onChange={onChangeProyect}
-        />
-
-        <input 
-          type="submit"
-          className="j-btn j-btn-primary j-btn-block"
-          value="Agregar Proyecto"
-        />
-      </form>
+      { form ?
+        (
+          <form 
+            className="j-form-new-proyect"
+            onSubmit={onSubmitProyect}
+          >
+            <input
+              type="text" 
+              className="j-input-text"
+              placeholder="Nombre Proyecto"
+              name="name"
+              value={name}
+              onChange={onChangeProyect}
+            />
+    
+            <input 
+              type="submit"
+              className="j-btn j-btn-primary j-btn-block"
+              value="Agregar Proyecto"
+            />
+          </form>
+        ) : null
+      }
     </Fragment>
   );
 }
