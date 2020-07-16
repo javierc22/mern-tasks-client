@@ -2,7 +2,7 @@ import React, {useReducer} from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import proyectContext from './proyectContext';
 import proyectReducer from './proyectReducer';
-import {FORM_PROYECT, GET_PROYECTS, ADD_PROYECT, VALIDATE_FORM} from '../../types';
+import {FORM_PROYECT, GET_PROYECTS, ADD_PROYECT, VALIDATE_FORM, ACTUAL_PROYECT} from '../../types';
 
 const ProyectState = props => {
 
@@ -16,7 +16,8 @@ const ProyectState = props => {
   const initialState = {
     proyects: [],
     form: false,
-    errorForm: false
+    errorForm: false,
+    proyect: null,
   }
 
   // Dispatch para ejecutar las acciones
@@ -50,16 +51,26 @@ const ProyectState = props => {
     })
   }
 
+  // Selecciona el proyecto que al que el usuario da click
+  const actualProyect = proyectId => {
+    dispatch({
+      type: ACTUAL_PROYECT,
+      payload: proyectId
+    })
+  }
+
   return (
     <proyectContext.Provider
       value={{
         form: state.form,
         errorForm: state.errorForm,
         proyects: state.proyects,
+        proyect: state.proyect,
         showForm,
         getProyects,
         addProyect,
-        showError
+        showError,
+        actualProyect,
       }}
     >
       {props.children}

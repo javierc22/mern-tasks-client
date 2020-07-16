@@ -1,4 +1,10 @@
-import {FORM_PROYECT, GET_PROYECTS, ADD_PROYECT, VALIDATE_FORM} from '../../types';
+import {
+  FORM_PROYECT, 
+  GET_PROYECTS, 
+  ADD_PROYECT, 
+  VALIDATE_FORM, 
+  ACTUAL_PROYECT
+} from '../../types';
 
 export default (state, action) => {
   switch (action.type) {
@@ -26,6 +32,12 @@ export default (state, action) => {
       return {
         ...state,
         errorForm: true
+      }
+    
+    case ACTUAL_PROYECT:
+      return {
+        ...state,
+        proyect: state.proyects.filter( proyect => proyect.id === action.payload )
       }
 
     default:
