@@ -22,6 +22,7 @@ const TaskState = props => {
       { name: 'Elegir Colores', status: false, proyectId: 4},
       { name: 'Elegir Plataformas de pago', status: false, proyectId: 3}
     ],
+    proyectTasks: null
   }
 
   // Crear State y Dispatch
@@ -39,6 +40,7 @@ const TaskState = props => {
     <TaskContext.Provider
       value={{
         tasks: state.tasks,
+        proyectTasks: state.proyectTasks,
         getTasks,
       }}
     >
