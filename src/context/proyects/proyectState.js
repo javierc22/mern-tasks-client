@@ -2,7 +2,14 @@ import React, {useReducer} from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import proyectContext from './proyectContext';
 import proyectReducer from './proyectReducer';
-import {FORM_PROYECT, GET_PROYECTS, ADD_PROYECT, VALIDATE_FORM, ACTUAL_PROYECT} from '../../types';
+import {
+  FORM_PROYECT, 
+  GET_PROYECTS, 
+  ADD_PROYECT, 
+  VALIDATE_FORM, 
+  ACTUAL_PROYECT,
+  DELETE_PROYECT
+} from '../../types';
 
 const ProyectState = props => {
 
@@ -59,6 +66,14 @@ const ProyectState = props => {
     })
   }
 
+  // Elimina un proyecto
+  const deleteProyect = proyectId => {
+    dispatch({
+      type: DELETE_PROYECT,
+      payload: proyectId
+    })
+  }
+
   return (
     <proyectContext.Provider
       value={{
@@ -71,6 +86,7 @@ const ProyectState = props => {
         addProyect,
         showError,
         actualProyect,
+        deleteProyect,
       }}
     >
       {props.children}

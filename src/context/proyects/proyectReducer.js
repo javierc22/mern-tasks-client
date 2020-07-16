@@ -3,7 +3,8 @@ import {
   GET_PROYECTS, 
   ADD_PROYECT, 
   VALIDATE_FORM, 
-  ACTUAL_PROYECT
+  ACTUAL_PROYECT,
+  DELETE_PROYECT
 } from '../../types';
 
 export default (state, action) => {
@@ -38,6 +39,13 @@ export default (state, action) => {
       return {
         ...state,
         proyect: state.proyects.filter( proyect => proyect.id === action.payload )
+      }
+
+    case DELETE_PROYECT:
+      return {
+        ...state,
+        proyects: state.proyects.filter( proyect => proyect.id !== action.payload ),
+        proyect: null
       }
 
     default:

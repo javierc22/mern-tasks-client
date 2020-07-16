@@ -14,7 +14,7 @@ const ListProyects = () => {
   }, []);
 
   // Verificar si el State 'proyects' tiene contenido
-  if (proyects.length === 0) return null;
+  if (proyects.length === 0) return <p>No hay proyectos, comienza creando uno</p>;
 
   return (
     <ul className="j-list-proyects">
