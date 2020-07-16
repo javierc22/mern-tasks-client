@@ -1,6 +1,18 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import proyectContext from '../../context/proyects/proyectContext';
 
 const FormTask = () => {
+
+  // Extraer si un proyecto está seleccionado
+  const proyectsContext = useContext(proyectContext);
+  const { proyect } = proyectsContext;
+
+  // Si no hay proyecto seleccionado, no se muestra nada
+  if (!proyect) return null;
+
+  // Array destructuring para extraer el proyecto actual
+  const [actualProyect] = proyect;
+
   return (
     <div className="j-form">
       <form>
