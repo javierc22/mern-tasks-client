@@ -4,25 +4,26 @@ import TaskReducer from './taskReducer';
 import {
   PROYECT_TASKS,
   ADD_TASK,
-  VALIDATE_TASK
+  VALIDATE_TASK,
+  DELETE_TASK
 } from '../../types';
 
 const TaskState = props => {
   const initialState = {
     tasks: [
-      { name: 'Elegir Plataforma', status: true, proyectId: 1},
-      { name: 'Elegir Colores', status: false, proyectId: 2},
-      { name: 'Elegir Plataformas de pago', status: false, proyectId: 3},
-      { name: 'Elegir Hosting', status: true, proyectId: 4},
-      { name: 'Elegir Plataforma', status: true, proyectId: 1},
-      { name: 'Elegir Colores', status: false, proyectId: 2},
-      { name: 'Elegir Plataformas de pago', status: false, proyectId: 3},
-      { name: 'Elegir Plataforma', status: true, proyectId: 4},
-      { name: 'Elegir Colores', status: false, proyectId: 1},
-      { name: 'Elegir Plataformas de pago', status: false, proyectId: 2},
-      { name: 'Elegir Plataforma', status: true, proyectId: 3},
-      { name: 'Elegir Colores', status: false, proyectId: 4},
-      { name: 'Elegir Plataformas de pago', status: false, proyectId: 3}
+      { id: 1, name: 'Elegir Plataforma', status: true, proyectId: 1},
+      { id: 2, name: 'Elegir Colores', status: false, proyectId: 2},
+      { id: 3, name: 'Elegir Plataformas de pago', status: false, proyectId: 3},
+      { id: 4, name: 'Elegir Hosting', status: true, proyectId: 4},
+      { id: 5, name: 'Elegir Plataforma', status: true, proyectId: 1},
+      { id: 6, name: 'Elegir Colores', status: false, proyectId: 2},
+      { id: 7, name: 'Elegir Plataformas de pago', status: false, proyectId: 3},
+      { id: 8, name: 'Elegir Plataforma', status: true, proyectId: 4},
+      { id: 9, name: 'Elegir Colores', status: false, proyectId: 1},
+      { id: 10, name: 'Elegir Plataformas de pago', status: false, proyectId: 2},
+      { id: 11, name: 'Elegir Plataforma', status: true, proyectId: 3},
+      { id: 12, name: 'Elegir Colores', status: false, proyectId: 4},
+      { id: 13, name: 'Elegir Plataformas de pago', status: false, proyectId: 3}
     ],
     proyectTasks: null,
     errorTask: false,
@@ -54,6 +55,14 @@ const TaskState = props => {
     })
   }
 
+  // Eliminar tarea
+  const deleteTask = id => {
+    dispatch({
+      type: DELETE_TASK,
+      payload: id
+    })
+  }
+
   return (
     <TaskContext.Provider
       value={{
@@ -63,6 +72,7 @@ const TaskState = props => {
         getTasks,
         addTask,
         validateTask,
+        deleteTask,
       }}
     >
       {props.children}

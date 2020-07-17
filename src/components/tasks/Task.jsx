@@ -1,6 +1,26 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import proyectContext from '../../context/proyects/proyectContext';
+import taskContext from '../../context/tasks/taskContext';
 
 const Task = ({task}) => {
+
+  // Extraer si un proyecto está seleccionado
+  const proyectsContext = useContext(proyectContext);
+  const { proyect } = proyectsContext;
+
+  // Obtener función context Tarea
+  const tasksContext = useContext(taskContext);
+  const { deleteTask, getTasks } = tasksContext;
+
+  // Extraer el proyecto
+  const [actualProyect] = proyect;
+
+  // Función para eliminar una tarea
+  const onClickDeleteTask = id => {
+    deleteTask(id);
+    getTasks(actualProyect.id);
+  }
+
   return (
     <li className="j-task j-shadow">
       <p>{task.name}</p>
@@ -32,6 +52,7 @@ const Task = ({task}) => {
         <button
           type="button"
           className="j-btn j-btn-secondary"
+          onClick={ () => onClickDeleteTask(task.id) }
         >Eliminar</button>
       </div>
     </li>

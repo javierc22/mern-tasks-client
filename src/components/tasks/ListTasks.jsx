@@ -33,6 +33,7 @@ const ListTasks = () => {
           (<li className="j-task"><p>No hay tareas</p></li>)
           : proyectTasks.map(task => (
             <Task
+              key={task.id}
               task={task}
             />
           ))
