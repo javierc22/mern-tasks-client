@@ -1,5 +1,6 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import proyectContext from '../../context/proyects/proyectContext';
+import taskContext from '../../context/tasks/taskContext';
 
 const FormTask = () => {
 
@@ -7,15 +8,40 @@ const FormTask = () => {
   const proyectsContext = useContext(proyectContext);
   const { proyect } = proyectsContext;
 
+  // Obtener la función del context de Tarea
+  const tasksContext = useContext(taskContext);
+  const { addTask } = tasksContext;
+
+  // State del Formulario
+  const [task, setTask] = useState({
+    name: ''
+  })
+
+  // Extraer el nombre del proyecto
+  const { name } = task;
+
   // Si no hay proyecto seleccionado, no se muestra nada
   if (!proyect) return null;
 
   // Array destructuring para extraer el proyecto actual
   const [actualProyect] = proyect;
 
+  // Leer los valores del Formulario
+  const handleChange = e => {
+    setTask({
+      ...task,
+      [e.target.name]: e.target.value
+    })
+  }
+
   // Submit formulario
   const onSubmit = e => {
     e.preventDefault();
+
+    // Agregar la nueva tarea al State de tareas
+    task.proyectId = actualProyect.id;
+    task.status = false;
+    addTask(task);
   }
 
   return (
@@ -29,6 +55,8 @@ const FormTask = () => {
             className="j-input-text"
             placeholder="Nombre Tarea..."
             name="name"
+            value={name}
+            onChange={handleChange}
           />
         </div>
 
