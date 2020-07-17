@@ -13,9 +13,16 @@ const FormTask = () => {
   // Array destructuring para extraer el proyecto actual
   const [actualProyect] = proyect;
 
+  // Submit formulario
+  const onSubmit = e => {
+    e.preventDefault();
+  }
+
   return (
     <div className="j-form">
-      <form>
+      <form
+        onSubmit={onSubmit}
+      >
         <div className="j-container-input">
           <input 
             type="text"
