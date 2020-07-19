@@ -10,7 +10,7 @@ const Task = ({task}) => {
 
   // Obtener función context Tarea
   const tasksContext = useContext(taskContext);
-  const { deleteTask, getTasks } = tasksContext;
+  const { deleteTask, getTasks, changeStatusTask } = tasksContext;
 
   // Extraer el proyecto
   const [actualProyect] = proyect;
@@ -19,6 +19,17 @@ const Task = ({task}) => {
   const onClickDeleteTask = id => {
     deleteTask(id);
     getTasks(actualProyect.id);
+  }
+
+  // Función que modifica el estado de las tareas
+  const changeStatus = task => {
+    if (task.status) {
+      task.status = false;
+    } else {
+      task.status = true;
+    }
+
+    changeStatusTask(task);
   }
 
   return (
@@ -31,6 +42,7 @@ const Task = ({task}) => {
             <button
               type="button"
               className="j-complete"
+              onClick={() => changeStatus(task)}
             >Completo</button>
           )
         :
@@ -38,6 +50,7 @@ const Task = ({task}) => {
             <button
               type="button"
               className="j-incomplete"
+              onClick={() => changeStatus(task)}
             >Incompleto</button>
           )
         }
