@@ -17,7 +17,10 @@ export default (state, action) => {
     case ADD_TASK:
       return {
         ...state,
-        tasks: [...state.tasks, action.payload],
+        // Agrega la nueva tarea al final de la lista
+        // tasks: [...state.tasks, action.payload],
+        // Agrega la nueva tarea al principio de la lista
+        tasks: [action.payload, ...state.tasks],
         errorTask: false
       }
     

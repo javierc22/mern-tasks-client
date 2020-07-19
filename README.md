@@ -14,3 +14,8 @@ $ npm i react-router-dom
 ~~~
 $ npm i -D uuid
 ~~~
+
+4. Instalar **React transition group** para las animaciones
+~~~
+$ npm i react-transition-group
+~~~
