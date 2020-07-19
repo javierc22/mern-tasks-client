@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useState, useEffect} from 'react';
 import proyectContext from '../../context/proyects/proyectContext';
 import taskContext from '../../context/tasks/taskContext';
 
@@ -10,7 +10,17 @@ const FormTask = () => {
 
   // Obtener la función del context de Tarea
   const tasksContext = useContext(taskContext);
-  const { errorTask, addTask, validateTask, getTasks } = tasksContext;
+  const { errorTask, addTask, validateTask, getTasks, selectedTask } = tasksContext;
+
+  useEffect(() => {
+    if (selectedTask !== null) {
+      setTask(selectedTask);
+    } else {
+      setTask({
+        name: ''
+      })
+    }
+  }, [selectedTask]);
 
   // State del Formulario
   const [task, setTask] = useState({
@@ -78,7 +88,7 @@ const FormTask = () => {
           <input 
             type="submit"
             className="j-btn j-btn-primary j-btn-submit j-btn-block"
-            value="Agregar Tarea"
+            value={selectedTask ? 'Editar Tarea' : 'Agregar Tarea'}
           />
         </div>
       </form>
