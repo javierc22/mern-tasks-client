@@ -10,7 +10,7 @@ const FormTask = () => {
 
   // Obtener la función del context de Tarea
   const tasksContext = useContext(taskContext);
-  const { errorTask, addTask, validateTask, getTasks, selectedTask } = tasksContext;
+  const { errorTask, addTask, validateTask, getTasks, selectedTask, updateTask } = tasksContext;
 
   useEffect(() => {
     if (selectedTask !== null) {
@@ -54,10 +54,16 @@ const FormTask = () => {
       return;
     }
 
-    // Agregar la nueva tarea al State de tareas
-    task.proyectId = actualProyect.id;
-    task.status = false;
-    addTask(task);
+    // Si es edición o nueva tarea
+    if (selectedTask === null) {
+      // Agrega la nueva tarea al state de tareas
+      task.proyectId = actualProyect.id;
+      task.status = false;
+      addTask(task);
+    } else {
+      // Actualiza la tarea seleccionada
+      updateTask(task);
+    }
 
     // Obtener y filtrar las tareas del proyecto actual
     getTasks(actualProyect.id);
