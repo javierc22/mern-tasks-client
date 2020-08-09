@@ -7,6 +7,7 @@ import Proyects from './components/proyects/Proyects';
 import ProyectState from './context/proyects/proyectState';
 import TaskState from './context/tasks/taskState';
 import AlertState from './context/alerts/alertState';
+import AuthState from './context/authentication/authState';
 
 
 function App() {
@@ -14,13 +15,15 @@ function App() {
     <ProyectState>
       <TaskState>
         <AlertState>
-          <Router>
-            <Switch>
-              <Route exact path='/' component={Login}/>
-              <Route exact path='/nueva-cuenta' component={NewAccount}/>
-              <Route exact path='/proyectos' component={Proyects}/>
-            </Switch>
-          </Router>
+          <AuthState>            
+            <Router>
+              <Switch>
+                <Route exact path='/' component={Login}/>
+                <Route exact path='/nueva-cuenta' component={NewAccount}/>
+                <Route exact path='/proyectos' component={Proyects}/>
+              </Switch>
+            </Router>
+          </AuthState>
         </AlertState>
       </TaskState>
     </ProyectState>

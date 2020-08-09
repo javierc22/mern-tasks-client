@@ -16,3 +16,10 @@ export const CLEAR_TASK = 'CLEAR_TASK';
 
 export const SHOW_ALERT = 'SHOW_ALERT';
 export const HIDE_ALERT = 'HIDE_ALERT';
+
+export const SUCCESSFUL_REGISTRATION = 'SUCCESSFUL_REGISTRATION';
+export const REGISTER_ERROR = 'REGISTER_ERROR';
+export const GET_USER = 'GET_USER';
+export const SUCCESSFUL_LOGIN = 'SUCCESSFUL_LOGIN';
+export const LOGIN_ERROR = 'LOGIN_ERROR';
+export const SIGN_OUT = 'SIGN_OUT';
