@@ -19,3 +19,8 @@ $ npm i -D uuid
 ~~~
 $ npm i react-transition-group
 ~~~
+
+5. Instalar **Axios**
+~~~
+npm i axios
+~~~
