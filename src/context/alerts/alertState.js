@@ -1,6 +1,6 @@
 import React, { useReducer } from 'react';
 import alertReducer from './alertReducer';
-import alertContext from './alertReducer';
+import alertContext from './alertContext';
 
 import { SHOW_ALERT, HIDE_ALERT } from '../../types';
 
@@ -21,7 +21,7 @@ const AlertState = props => {
         category
       }
     });
-
+    // Después de 5 segundos, ocultar la alerta
     setTimeout(() => {
       dispatch({
         type: HIDE_ALERT

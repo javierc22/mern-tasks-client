@@ -1,7 +1,11 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import { Link } from "react-router-dom";
+import AlertContext from '../../context/alerts/alertContext';
 
 const NewAccount = () => {
+  // Extraer los valores del Context
+  const alertContext = useContext(AlertContext);
+  const { alert, showAlert } = alertContext;
 
   // State para iniciar sesión
   const [user, setUser] = useState({
@@ -26,10 +30,15 @@ const NewAccount = () => {
   const onSubmit = e => {
     e.preventDefault();
 
+    // Validar que no existan campos vacíos
+    if (name.trim() === '' || email.trim() === '' || password.trim() === '' || password_confirmation.trim() === '') {
+      showAlert('Todos los campos son obligatorios', 'j-alert-error');
+    }
   }
 
   return (
     <div className="j-form-user">
+      { alert ? (<div className={`j-alert ${alert.category}`}>{alert.message}</div>) : null }
       <div className="j-container-form j-shadow-dark">
         <h1>Iniciar Sesión</h1>
 
