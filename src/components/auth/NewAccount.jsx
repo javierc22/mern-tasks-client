@@ -1,15 +1,26 @@
-import React, {useState, useContext} from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 import { Link } from "react-router-dom";
 import AlertContext from '../../context/alerts/alertContext';
 import AuthContext from '../../context/authentication/authContext';
 
-const NewAccount = () => {
+const NewAccount = (props) => {
   // Extraer los valores del Context
   const alertContext = useContext(AlertContext);
   const { alert, showAlert } = alertContext;
 
   const authContext = useContext(AuthContext);
-  const { registerUser } = authContext;
+  const { registerUser, message, authenticated } = authContext;
+
+  // En caso que el usuario se haya autenticado, registrado o sea un registro duplicado
+  useEffect(() => {
+    if (authenticated) {
+      props.history.push('/proyectos');
+    }
+
+    if (message) {
+      showAlert(message.message, message.category);
+    }
+  }, [message, authenticated, props.history]);
 
   // State para iniciar sesión
   const [user, setUser] = useState({
