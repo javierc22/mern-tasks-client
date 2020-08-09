@@ -1,11 +1,15 @@
 import React, {useState, useContext} from 'react';
 import { Link } from "react-router-dom";
 import AlertContext from '../../context/alerts/alertContext';
+import AuthContext from '../../context/authentication/authContext';
 
 const NewAccount = () => {
   // Extraer los valores del Context
   const alertContext = useContext(AlertContext);
   const { alert, showAlert } = alertContext;
+
+  const authContext = useContext(AuthContext);
+  const { registerUser } = authContext;
 
   // State para iniciar sesión
   const [user, setUser] = useState({
@@ -47,6 +51,11 @@ const NewAccount = () => {
       showAlert('Los passwords no son iguales', 'j-alert-error');
       return;
     }
+
+    // Registrar usuario
+    registerUser({
+      name, email, password
+    });
   }
 
   return (
