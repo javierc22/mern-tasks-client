@@ -33,6 +33,19 @@ const NewAccount = () => {
     // Validar que no existan campos vacíos
     if (name.trim() === '' || email.trim() === '' || password.trim() === '' || password_confirmation.trim() === '') {
       showAlert('Todos los campos son obligatorios', 'j-alert-error');
+      return;
+    }
+
+    // Password mínimo de 6 caracteres
+    if (password.length < 6) {
+      showAlert('El password debe ser de al menos 6 caracteres', 'j-alert-error');
+      return;
+    }
+
+    // Revisar que password y password_confirmation sean iguales
+    if (password !== password_confirmation) {
+      showAlert('Los passwords no son iguales', 'j-alert-error');
+      return;
     }
   }
 
