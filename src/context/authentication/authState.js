@@ -71,6 +71,25 @@ const AuthState = props => {
       })
     }
   }
+
+  // Inicio de sesión
+  const loginUser = async data => {
+    try {
+      const response = await axiosClient.post('/api/auth', data);
+      console.log(response);
+    } catch (error) {
+      console.log(error.response.data.msg);
+      const alert = {
+        msg: error.response.data.msg,
+        category: 'j-alert-error'
+      }
+
+      dispatch({
+        type: LOGIN_ERROR,
+        payload: alert
+      })
+    }
+  }
   
   
   return (
@@ -80,7 +99,8 @@ const AuthState = props => {
         authenticated: state.authenticated,
         user: state.user,
         message: state.message,
-        registerUser
+        registerUser,
+        loginUser,
       }}
     >
       {props.children}
