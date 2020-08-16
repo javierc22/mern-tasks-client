@@ -41,10 +41,9 @@ export default (state, action) => {
       }
 
     case UPDATE_TASK:
-    case STATUS_TASK:
       return {
         ...state,
-        proyectTasks: state.proyectTasks.map( task => task.id === action.payload.id ? action.payload : task )
+        proyectTasks: state.proyectTasks.map( task => task._id === action.payload._id ? action.payload : task )
       }
 
     case CURRENT_TASK:

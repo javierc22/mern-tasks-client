@@ -10,7 +10,7 @@ const Task = ({task}) => {
 
   // Obtener función context Tarea
   const tasksContext = useContext(taskContext);
-  const { deleteTask, getTasks, changeStatusTask, saveCurrentTask } = tasksContext;
+  const { deleteTask, getTasks, saveCurrentTask, updateTask } = tasksContext;
 
   // Extraer el proyecto
   const [actualProyect] = proyect;
@@ -29,7 +29,7 @@ const Task = ({task}) => {
       task.status = true;
     }
 
-    changeStatusTask(task);
+    updateTask(task);
   }
 
   // Agrega una tarea actual cuando el usuario desea editarla
