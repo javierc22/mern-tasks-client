@@ -1,15 +1,26 @@
-import React, {useState, useContext} from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 import { Link } from "react-router-dom";
 import AlertContext from '../../context/alerts/alertContext';
 import AuthContext from '../../context/authentication/authContext';
 
-const Login = () => {
+const Login = (props) => {
   // extraer los valores del context
   const alertContext = useContext(AlertContext);
   const { alert, showAlert } = alertContext;
 
   const authContext = useContext(AuthContext);
   const { message, authenticated, loginUser } = authContext;
+
+  useEffect( ()=> {
+    // Si el usuario está autenticado
+    if (authenticated) {
+      props.history.push('/proyectos');
+    }
+    // Si existe un mensaje de error
+    if (message) {
+      showAlert(message.msg, message.category);
+    }
+  }, [message, authenticated, loginUser]);
 
   // State para iniciar sesión
   const [user, setUser] = useState({
