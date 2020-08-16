@@ -25,11 +25,18 @@ const TaskState = props => {
   const [state, dispatch] = useReducer(TaskReducer, initialState);
 
   // Obtener las tareas de un proyecto
-  const getTasks = proyectId => {
-    dispatch({
-      type: PROYECT_TASKS,
-      payload: proyectId
-    })
+  const getTasks = async project => {
+
+    try {
+      const response = await axiosClient.get('/api/tasks', { params: { project } });
+
+      dispatch({
+        type: PROYECT_TASKS,
+        payload: response.data.tasks
+      }) 
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   // Agregar una tarea al proyecto seleccionado
