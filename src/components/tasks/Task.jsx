@@ -17,7 +17,7 @@ const Task = ({task}) => {
 
   // Función para eliminar una tarea
   const onClickDeleteTask = id => {
-    deleteTask(id);
+    deleteTask(id, actualProyect._id);
     getTasks(actualProyect.id);
   }
 
@@ -71,7 +71,7 @@ const Task = ({task}) => {
         <button
           type="button"
           className="j-btn j-btn-secondary"
-          onClick={ () => onClickDeleteTask(task.id) }
+          onClick={ () => onClickDeleteTask(task._id) }
         >Eliminar</button>
       </div>
     </li>

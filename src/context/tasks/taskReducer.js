@@ -37,7 +37,7 @@ export default (state, action) => {
     case DELETE_TASK:
       return {
         ...state,
-        proyectTasks: state.proyectTasks.filter( task => task.id !== action.payload )
+        proyectTasks: state.proyectTasks.filter( task => task._id !== action.payload )
       }
 
     case UPDATE_TASK:
