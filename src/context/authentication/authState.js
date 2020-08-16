@@ -108,6 +108,7 @@ const AuthState = props => {
         message: state.message,
         registerUser,
         loginUser,
+        authenticateUser,
       }}
     >
       {props.children}
