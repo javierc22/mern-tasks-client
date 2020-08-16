@@ -15,7 +15,7 @@ export default (state, action) => {
     case PROYECT_TASKS:
       return {
         ...state,
-        proyectTasks: state.tasks.filter( task => task.proyectId === action.payload )
+        proyectTasks: state.proyectTasks.filter( task => task.proyectId === action.payload )
       }
 
     case ADD_TASK:
@@ -24,7 +24,7 @@ export default (state, action) => {
         // Agrega la nueva tarea al final de la lista
         // tasks: [...state.tasks, action.payload],
         // Agrega la nueva tarea al principio de la lista
-        tasks: [action.payload, ...state.tasks],
+        proyectTasks: [action.payload, ...state.proyectTasks],
         errorTask: false
       }
     
@@ -37,14 +37,14 @@ export default (state, action) => {
     case DELETE_TASK:
       return {
         ...state,
-        tasks: state.tasks.filter( task => task.id !== action.payload )
+        proyectTasks: state.proyectTasks.filter( task => task.id !== action.payload )
       }
 
     case UPDATE_TASK:
     case STATUS_TASK:
       return {
         ...state,
-        tasks: state.tasks.map( task => task.id === action.payload.id ? action.payload : task )
+        proyectTasks: state.proyectTasks.map( task => task.id === action.payload.id ? action.payload : task )
       }
 
     case CURRENT_TASK:

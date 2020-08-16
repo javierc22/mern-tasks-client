@@ -1,5 +1,4 @@
 import React, { useReducer } from 'react';
-import { v4 as uuidv4 } from 'uuid';
 import TaskContext from './taskContext';
 import TaskReducer from './taskReducer';
 import {
@@ -13,24 +12,11 @@ import {
   CLEAR_TASK
 } from '../../types';
 
+import axiosClient from '../../config/axios';
+
 const TaskState = props => {
   const initialState = {
-    tasks: [
-      { id: 1, name: 'Elegir Plataforma', status: true, proyectId: 1},
-      { id: 2, name: 'Elegir Colores', status: false, proyectId: 2},
-      { id: 3, name: 'Elegir Plataformas de pago', status: false, proyectId: 3},
-      { id: 4, name: 'Elegir Hosting', status: true, proyectId: 4},
-      { id: 5, name: 'Elegir Plataforma', status: true, proyectId: 1},
-      { id: 6, name: 'Elegir Colores', status: false, proyectId: 2},
-      { id: 7, name: 'Elegir Plataformas de pago', status: false, proyectId: 3},
-      { id: 8, name: 'Elegir Plataforma', status: true, proyectId: 4},
-      { id: 9, name: 'Elegir Colores', status: false, proyectId: 1},
-      { id: 10, name: 'Elegir Plataformas de pago', status: false, proyectId: 2},
-      { id: 11, name: 'Elegir Plataforma', status: true, proyectId: 3},
-      { id: 12, name: 'Elegir Colores', status: false, proyectId: 4},
-      { id: 13, name: 'Elegir Plataformas de pago', status: false, proyectId: 3}
-    ],
-    proyectTasks: null,
+    proyectTasks: [],
     errorTask: false,
     selectedTask: null,
   }
@@ -47,12 +33,18 @@ const TaskState = props => {
   }
 
   // Agregar una tarea al proyecto seleccionado
-  const addTask = task => {
-    task.id = uuidv4();
-    dispatch({
-      type: ADD_TASK,
-      payload: task
-    })
+  const addTask = async task => {
+    try {
+      const response = await axiosClient.post('/api/tasks', task);
+      console.log(response);
+
+      dispatch({
+        type: ADD_TASK,
+        payload: task
+      }) 
+    } catch (error) {
+      
+    }
   }
 
   // Valida y muestra un error en caso de que sea necesario
@@ -104,7 +96,6 @@ const TaskState = props => {
   return (
     <TaskContext.Provider
       value={{
-        tasks: state.tasks,
         proyectTasks: state.proyectTasks,
         errorTask: state.errorTask,
         selectedTask: state.selectedTask,
