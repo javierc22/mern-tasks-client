@@ -22,7 +22,7 @@ const ListTasks = () => {
 
   // Elimina un proyecto
   const onClickDelete = () => {
-    deleteProyect(actualProyect.id);
+    deleteProyect(actualProyect._id);
   }
 
   return (

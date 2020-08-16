@@ -44,7 +44,7 @@ export default (state, action) => {
     case DELETE_PROYECT:
       return {
         ...state,
-        proyects: state.proyects.filter( proyect => proyect.id !== action.payload ),
+        proyects: state.proyects.filter( proyect => proyect._id !== action.payload ),
         proyect: null
       }
 
