@@ -21,15 +21,20 @@ export default (state, action) => {
     case GET_USER:
       return {
         ...state,
+        authenticated: true,
         user: action.payload
       }
+
+    case SIGN_OUT:
     case LOGIN_ERROR:
     case REGISTER_ERROR:
       localStorage.removeItem('token');
       return {
         ...state,
         token: null,
-        message: action.payload
+        message: action.payload,
+        user: null,
+        authenticated: false
       }
 
     default:

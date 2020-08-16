@@ -360,5 +360,9 @@ aside  {
 }
 .j-alert-error {
   background-color: rgb(230, 78, 78);
-  color: var(--blanco);
+  color: var(--white);
+}
+
+.j-sign-out {
+  color: var(--white);
 }
