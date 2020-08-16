@@ -7,7 +7,8 @@ import {
   ADD_PROYECT, 
   VALIDATE_FORM, 
   ACTUAL_PROYECT,
-  DELETE_PROYECT
+  DELETE_PROYECT,
+  PROJECT_ERROR
 } from '../../types';
 
 import axiosClient from '../../config/axios';
@@ -19,6 +20,7 @@ const ProyectState = props => {
     form: false,
     errorForm: false,
     proyect: null,
+    message: null,
   }
 
   // Dispatch para ejecutar las acciones
@@ -40,7 +42,15 @@ const ProyectState = props => {
         payload: response.data.projects
       })      
     } catch (error) {
-      console.log(error);
+      const alert = {
+        msg: 'Hubo un error',
+        category: 'j-alert-error'
+      }
+
+      dispatch({
+        type: PROJECT_ERROR,
+        payload: alert
+      })
     }
   }
 
@@ -55,7 +65,15 @@ const ProyectState = props => {
         payload: response.data
       })
     } catch (error) {
-      console.log(error);
+      const alert = {
+        msg: 'Hubo un error',
+        category: 'j-alert-error'
+      }
+
+      dispatch({
+        type: PROJECT_ERROR,
+        payload: alert
+      })
     }
   }
 
@@ -83,7 +101,15 @@ const ProyectState = props => {
         payload: projectId
       })
     } catch (error) {
-      console.log(error);
+      const alert = {
+        msg: 'Hubo un error',
+        category: 'j-alert-error'
+      }
+
+      dispatch({
+        type: PROJECT_ERROR,
+        payload:alert
+      })
     }
   }
 
@@ -94,6 +120,7 @@ const ProyectState = props => {
         errorForm: state.errorForm,
         proyects: state.proyects,
         proyect: state.proyect,
+        message: state.message,
         showForm,
         getProyects,
         addProyect,
